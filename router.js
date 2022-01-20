@@ -6,7 +6,7 @@ const Task =require('./DL/TaskController')
 module.exports = (app) =>       //export app to main server
 {
 
-    app.get('/task',async (req, res) => {
+    app.get('/api/task',async (req, res) => {
         try {
             let result = await Task.read()//task.read =taskModel.findAllData
             res.status(202);   //202=accepted 
@@ -18,7 +18,7 @@ module.exports = (app) =>       //export app to main server
     }
 })
 
-app.post('/task',async (req, res) => {
+app.post('/api/task',async (req, res) => {
     //let type = req.params.id
     const body = req.body
     try {
@@ -33,7 +33,7 @@ app.post('/task',async (req, res) => {
     
 })
 
-app.put('/task/:id',async (req, res) => {
+app.put('/api/task/:id',async (req, res) => {
     const {id} = req.params
     try {
         let result = await Task.update(id,req.body)
@@ -46,7 +46,7 @@ app.put('/task/:id',async (req, res) => {
     
 }) 
 
-app.delete('/task/:id',async (req, res) => {
+app.delete('/api/task/:id',async (req, res) => {
     const {id} = req.params
     try {
         let result=await Task.delete(id)      //delete mission by some ID
@@ -60,7 +60,7 @@ app.delete('/task/:id',async (req, res) => {
     
     })
 
-app.delete('/deleteall',async (req, res) => {
+app.delete('/api/deleteall',async (req, res) => {
     //const {id} = req.params
     try {
         let result=await Task.delAll()      //delete mission by some ID
@@ -74,6 +74,9 @@ app.delete('/deleteall',async (req, res) => {
     
     })
 
+    app.get('*',(req, res) => {
 
+            res.sendFile(__dirname+'/client/build/index.html') 
+    })
 
 }
