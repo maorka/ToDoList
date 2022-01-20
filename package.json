@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "heroku-postbild":"cd client && npm i && npm run build",
+    "start": "node server.js",
+    "heroku-postbuild":"cd client && npm i && npm run build",
     "dev":"concurrently \"nodemon server.js\" \"cd client && npm start\""
   },
   "keywords": [],
