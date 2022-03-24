@@ -8,10 +8,10 @@ export default function List(props) {
     return (
         <ul>
 
-            {list.map(t =>//      t=mission object
+            {list.map(t =>                     //      t=mission object
                 <ListItem
                     key={t._id}
-                    // {...t},disassembled the t object
+                                            // {...t},disassembled the t object
                     id={t._id}
                     Title={t.title}
                     done={t.isDone}
